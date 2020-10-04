@@ -27,6 +27,7 @@ public class MainActivity extends Activity {
     public String feels_like;
     public String icon;
     public String weather;
+    public String country;
 
     public class CallAPI extends AsyncTask<String, Void, String> {
 
@@ -113,6 +114,11 @@ public class MainActivity extends Activity {
                         Log.i("I", "Parsing icon: " + icon);
                     }
 
+                    if(tag.equals("country")) {
+                        country = parser.getAttributeValue(null, "");
+                        Log.i("I", "Country: " + country);
+                    }
+
                     if (parser.getAttributeValue(null, "value") != null)
                         result += " = " + parser.getAttributeValue(null, "value");
                     if (parser.getAttributeValue(null, "name") != null)
@@ -136,6 +142,7 @@ public class MainActivity extends Activity {
             intent.putExtra("feels_like", feels_like);
             intent.putExtra("weather", weather);
             intent.putExtra("icon", icon);
+            intent.putExtra("country", country);
 
             startActivity(intent);
         }
@@ -146,7 +153,7 @@ public class MainActivity extends Activity {
         String baseURL = "http://api.openweathermap.org/data/2.5/weather?";
         String responseMode ="&mode=xml";
         String units = "&units=metric";
-        String apiKey="&APPID=";
+        String apiKey="&APPID=ce27b0fe7a8b04f3f8d0330c057b638b";
         apiURL = baseURL + responseMode + units + apiKey;
 
         EditText city = findViewById(R.id.city);

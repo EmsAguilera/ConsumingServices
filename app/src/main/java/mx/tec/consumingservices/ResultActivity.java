@@ -24,6 +24,7 @@ public class ResultActivity extends Activity {
         String feels_like = intent.getStringExtra("feels_like");
         String weather =  intent.getStringExtra("weather");
         String icon =  intent.getStringExtra("icon");
+        String country =  intent.getStringExtra("country");
 
         TextView fullTextView = findViewById(R.id.results);
         fullTextView.setTextSize(36);
@@ -44,6 +45,10 @@ public class ResultActivity extends Activity {
         TextView commTextView = findViewById(R.id.Comment);
         commTextView.setTextSize(20);
         commTextView.setText("Comment: " + weather);
+
+        TextView CountryTextView = findViewById(R.id.Country);
+        CountryTextView.setTextSize(24);
+        CountryTextView.setText("Country: " + country);
 
         Context myContext = getApplicationContext();
         ImageView myImageView = findViewById(R.id.imageView);
